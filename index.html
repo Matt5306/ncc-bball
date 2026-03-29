@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NCC Youth vs UNCs — A Battle to Remember</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: #0a0a0a;
+            color: #f0f0f0;
+            line-height: 1.7;
+        }
+
+        /* Hero Banner */
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 70vh;
+            min-height: 500px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .hero img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.35);
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 0 20px;
+        }
+        .hero-content h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 4rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            line-height: 1.1;
+            text-shadow: 2px 4px 20px rgba(0,0,0,0.8);
+        }
+        .hero-content h1 span.ncc { color: #ffffff; }
+        .hero-content h1 span.vs { color: #fbbf24; font-size: 2.5rem; }
+        .hero-content h1 span.uncs { color: #60a5fa; }
+        .hero-subtitle {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.4rem;
+            color: #fbbf24;
+            margin-top: 15px;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+        }
+        .hero-score {
+            margin-top: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+        }
+        .hero-score .team-score {
+            text-align: center;
+        }
+        .hero-score .team-name {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.2rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            opacity: 0.8;
+        }
+        .hero-score .score-num {
+            font-family: 'Oswald', sans-serif;
+            font-size: 5rem;
+            font-weight: 700;
+            line-height: 1;
+        }
+        .hero-score .score-num.ncc-score { color: #ffffff; }
+        .hero-score .score-num.uncs-score { color: #60a5fa; }
+        .hero-score .score-dash {
+            font-family: 'Oswald', sans-serif;
+            font-size: 3rem;
+            color: #fbbf24;
+        }
+
+        /* Content Container */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        /* Section Headers */
+        .section-header {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #fbbf24;
+            display: inline-block;
+        }
+
+        /* Body Text */
+        .body-text {
+            font-size: 1.1rem;
+            color: #d1d5db;
+            margin-bottom: 30px;
+        }
+
+        /* Photo Grid */
+        .photo-section {
+            margin: 50px 0;
+        }
+        .photo-full {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+        }
+        .photo-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .photo-grid img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+            transition: transform 0.3s ease;
+        }
+        .photo-grid img:hover {
+            transform: scale(1.02);
+        }
+        .photo-caption {
+            text-align: center;
+            font-size: 0.9rem;
+            color: #9ca3af;
+            margin-top: -15px;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        /* Scoreboard Timeline */
+        .score-timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            margin: 40px 0;
+            position: relative;
+        }
+        .score-timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, #fbbf24, #60a5fa);
+            transform: translateX(-50%);
+        }
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            padding: 20px 0;
+            position: relative;
+        }
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            width: 16px;
+            height: 16px;
+            background: #fbbf24;
+            border-radius: 50%;
+            transform: translateX(-50%);
+            border: 3px solid #0a0a0a;
+        }
+        .timeline-left, .timeline-right {
+            width: 45%;
+        }
+        .timeline-left {
+            text-align: right;
+            padding-right: 40px;
+        }
+        .timeline-right {
+            padding-left: 40px;
+            margin-left: auto;
+        }
+        .timeline-period {
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.9rem;
+            color: #fbbf24;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .timeline-score-display {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+        }
+        .timeline-note {
+            font-size: 0.85rem;
+            color: #9ca3af;
+            margin-top: 5px;
+        }
+
+        /* Highlight Box */
+        .highlight-box {
+            background: linear-gradient(135deg, #1e1e2e 0%, #1a1a2e 100%);
+            border-left: 4px solid #fbbf24;
+            border-radius: 0 8px 8px 0;
+            padding: 25px 30px;
+            margin: 30px 0;
+        }
+        .highlight-box p {
+            font-size: 1.15rem;
+            color: #e5e7eb;
+        }
+
+        /* Video Section */
+        .video-section {
+            margin: 50px 0;
+            text-align: center;
+        }
+        .video-container {
+            max-width: 100%;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+        }
+        .video-container video {
+            width: 100%;
+            display: block;
+        }
+
+        /* Footer */
+        .blog-footer {
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid #333;
+            margin-top: 60px;
+        }
+        .blog-footer .church-name {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.5rem;
+            color: #fbbf24;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+        .blog-footer .tagline {
+            color: #6b7280;
+            margin-top: 8px;
+            font-size: 0.95rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 2.5rem; }
+            .hero-score .score-num { font-size: 3.5rem; }
+            .photo-grid { grid-template-columns: 1fr; }
+            .score-timeline::before { left: 20px; }
+            .timeline-item::after { left: 20px; }
+            .timeline-left {
+                text-align: left;
+                padding-left: 50px;
+                padding-right: 0;
+                width: 100%;
+            }
+            .timeline-right {
+                padding-left: 50px;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero -->
+    <div class="hero">
+        <img src="4506.jpg" alt="Layup action shot">
+        <div class="hero-content">
+            <h1>
+                <span class="ncc">NCC Youth</span>
+                <span class="vs"> vs </span>
+                <span class="uncs">UNCs</span>
+            </h1>
+            <div class="hero-subtitle">A Battle to Remember</div>
+            <div class="hero-score">
+                <div class="team-score">
+                    <div class="team-name">NCC</div>
+                    <div class="score-num ncc-score">88</div>
+                </div>
+                <div class="score-dash">&mdash;</div>
+                <div class="team-score">
+                    <div class="team-name">UNCs</div>
+                    <div class="score-num uncs-score">96</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <!-- Intro -->
+        <p class="body-text">
+            What a game. NCC Youth went toe-to-toe with UNCs in a back-and-forth battle that had everyone on their feet from tip-off to the final buzzer. This wasn't just a basketball game — it was a statement. Our youth showed heart, grit, and a level of competitiveness that had the gym buzzing all night.
+        </p>
+
+        <!-- Action Photos -->
+        <div class="photo-section">
+            <div class="section-header">Game Action</div>
+            <img src="4506.jpg" alt="Player driving for a layup" class="photo-full">
+            <p class="photo-caption">Attacking the rim — full flight to the basket</p>
+
+            <img src="4505.jpg" alt="Players battling in the paint" class="photo-full">
+            <p class="photo-caption">Battling in the paint — NCC holding their ground</p>
+        </div>
+
+        <!-- The Story -->
+        <div class="section-header">How It Went Down</div>
+        <p class="body-text">
+            UNCs came out strong and built an early lead, pushing ahead 57-51 heading into the later stages. But NCC Youth didn't flinch. They chipped away, clawed back, and eventually took the lead at 81-78 — flipping the script and sending the crowd into a frenzy.
+        </p>
+
+        <div class="highlight-box">
+            <p>
+                Down 6 in the second half, NCC Youth went on a 30-21 run to take a 3-point lead. That stretch showed exactly what this team is made of — resilience, teamwork, and an absolute refusal to quit.
+            </p>
+        </div>
+
+        <p class="body-text">
+            With the game knotted at 81-81, it was anyone's to take. UNCs found another gear in the closing minutes, pulling away to seal a 96-88 victory. The final score doesn't tell the full story — this game was contested every single possession.
+        </p>
+
+        <!-- Scoreboard Photos -->
+        <div class="photo-section">
+            <div class="section-header">The Scoreboard Story</div>
+            <div class="photo-grid">
+                <div>
+                    <img src="original (5).jpeg" alt="NCC 51 - UNCs 57">
+                    <p class="photo-caption" style="margin-top:10px">UNCs lead 57-51</p>
+                </div>
+                <div>
+                    <img src="original (3).jpeg" alt="NCC 81 - UNCs 78">
+                    <p class="photo-caption" style="margin-top:10px">NCC takes the lead 81-78</p>
+                </div>
+                <div>
+                    <img src="original (2).jpeg" alt="Tied 81-81">
+                    <p class="photo-caption" style="margin-top:10px">Tied at 81 — game on</p>
+                </div>
+                <div>
+                    <img src="4541.jpg" alt="Final score NCC 88 - UNCs 96">
+                    <p class="photo-caption" style="margin-top:10px">Final: NCC 88, UNCs 96</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Score Timeline -->
+        <div class="section-header">Score Progression</div>
+        <div class="score-timeline">
+            <div class="timeline-item">
+                <div class="timeline-left">
+                    <div class="timeline-period">Mid Game</div>
+                    <div class="timeline-score-display" style="color:#60a5fa">UNCs 57 - NCC 51</div>
+                    <div class="timeline-note">UNCs controlling the pace early</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-right">
+                    <div class="timeline-period">NCC Run</div>
+                    <div class="timeline-score-display" style="color:#ffffff">NCC 81 - UNCs 78</div>
+                    <div class="timeline-note">NCC flips the lead — 30-21 run</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-left">
+                    <div class="timeline-period">Crunch Time</div>
+                    <div class="timeline-score-display" style="color:#fbbf24">81 - 81 TIED</div>
+                    <div class="timeline-note">UNCs answers back — it's anyone's game</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-right">
+                    <div class="timeline-period">Final</div>
+                    <div class="timeline-score-display" style="color:#60a5fa">UNCs 96 - NCC 88</div>
+                    <div class="timeline-note">UNCs pulls away in the final minutes</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Video Section -->
+        <div class="video-section">
+            <div class="section-header">Game Footage</div>
+            <div class="video-container">
+                <video controls poster="4506.jpg">
+                    <source src="4507.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <p class="photo-caption" style="margin-top:15px">Highlights from the NCC Youth vs UNCs matchup</p>
+        </div>
+
+        <!-- Closing -->
+        <div class="section-header">Looking Ahead</div>
+        <p class="body-text">
+            The final score says UNCs took this one, but NCC Youth proved something tonight. This team doesn't back down. They fought back from a deficit, took the lead, and went blow-for-blow with a strong opponent until the very end. The future is bright for NCC Youth basketball — and the next matchup is going to be even better.
+        </p>
+
+        <div class="highlight-box">
+            <p>
+                Proud of every single one of these young men. The score resets, but the effort and growth carry forward. This is what it's about.
+            </p>
+        </div>
+
+        <!-- Remaining Photos -->
+        <div class="photo-section">
+            <div class="section-header">More From the Game</div>
+            <div class="photo-grid">
+                <img src="original.jpeg" alt="End of game scene">
+                <img src="original (1).jpeg" alt="Game scene">
+                <img src="original (4).jpeg" alt="Late game action">
+                <img src="original (5).jpeg" alt="Game atmosphere">
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <div class="blog-footer">
+        <div class="church-name">New Creation Church</div>
+        <div class="tagline">Youth Basketball — Building character on and off the court</div>
+    </div>
+
+</body>
+</html>
