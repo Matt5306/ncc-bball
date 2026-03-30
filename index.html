@@ -27,7 +27,7 @@
             align-items: center;
             justify-content: center;
         }
-        .hero img {
+        .hero img.hero-bg {
             position: absolute;
             width: 100%;
             height: 100%;
@@ -39,6 +39,12 @@
             z-index: 2;
             text-align: center;
             padding: 0 20px;
+        }
+        .hero-logo {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 20px;
+            filter: drop-shadow(0 4px 15px rgba(0,0,0,0.6));
         }
         .hero-content h1 {
             font-family: 'Oswald', sans-serif;
@@ -116,6 +122,56 @@
             font-size: 1.1rem;
             color: #d1d5db;
             margin-bottom: 30px;
+        }
+
+        /* Scripture Block */
+        .scripture-block {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            border-left: 4px solid #fbbf24;
+            border-radius: 0 8px 8px 0;
+            padding: 30px 35px;
+            margin: 40px 0;
+            position: relative;
+        }
+        .scripture-block::before {
+            content: '\201C';
+            font-family: 'Oswald', sans-serif;
+            font-size: 5rem;
+            color: #fbbf24;
+            opacity: 0.3;
+            position: absolute;
+            top: -10px;
+            left: 15px;
+            line-height: 1;
+        }
+        .scripture-text {
+            font-size: 1.2rem;
+            color: #e5e7eb;
+            font-style: italic;
+            line-height: 1.8;
+            margin-bottom: 12px;
+            padding-left: 10px;
+        }
+        .scripture-ref {
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.95rem;
+            color: #fbbf24;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding-left: 10px;
+        }
+
+        /* Highlight Box */
+        .highlight-box {
+            background: linear-gradient(135deg, #1e1e2e 0%, #1a1a2e 100%);
+            border-left: 4px solid #fbbf24;
+            border-radius: 0 8px 8px 0;
+            padding: 25px 30px;
+            margin: 30px 0;
+        }
+        .highlight-box p {
+            font-size: 1.15rem;
+            color: #e5e7eb;
         }
 
         /* Photo Grid */
@@ -216,19 +272,6 @@
             margin-top: 5px;
         }
 
-        /* Highlight Box */
-        .highlight-box {
-            background: linear-gradient(135deg, #1e1e2e 0%, #1a1a2e 100%);
-            border-left: 4px solid #fbbf24;
-            border-radius: 0 8px 8px 0;
-            padding: 25px 30px;
-            margin: 30px 0;
-        }
-        .highlight-box p {
-            font-size: 1.15rem;
-            color: #e5e7eb;
-        }
-
         /* Video Section */
         .video-section {
             margin: 50px 0;
@@ -248,9 +291,15 @@
         /* Footer */
         .blog-footer {
             text-align: center;
-            padding: 40px 20px;
+            padding: 50px 20px;
             border-top: 1px solid #333;
             margin-top: 60px;
+        }
+        .footer-logo {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 15px;
+            filter: drop-shadow(0 4px 15px rgba(0,0,0,0.6));
         }
         .blog-footer .church-name {
             font-family: 'Oswald', sans-serif;
@@ -264,11 +313,18 @@
             margin-top: 8px;
             font-size: 0.95rem;
         }
+        .footer-scripture {
+            color: #9ca3af;
+            font-style: italic;
+            margin-top: 15px;
+            font-size: 0.9rem;
+        }
 
         /* Responsive */
         @media (max-width: 768px) {
             .hero-content h1 { font-size: 2.5rem; }
             .hero-score .score-num { font-size: 3.5rem; }
+            .hero-logo { width: 70px; height: 70px; }
             .photo-grid { grid-template-columns: 1fr; }
             .score-timeline::before { left: 20px; }
             .timeline-item::after { left: 20px; }
@@ -289,8 +345,9 @@
 
     <!-- Hero -->
     <div class="hero">
-        <img src="4506.jpg" alt="Layup action shot">
+        <img class="hero-bg" src="4506.jpg" alt="Layup action shot">
         <div class="hero-content">
+            <img src="ncc-logo-clean.png" alt="New Creation Church" class="hero-logo">
             <h1>
                 <span class="ncc">NCC Youth</span>
                 <span class="vs"> vs </span>
@@ -313,9 +370,17 @@
 
     <div class="container">
 
+        <!-- Opening Scripture -->
+        <div class="scripture-block">
+            <div class="scripture-text">
+                I have fought the good fight, I have finished the race, I have kept the faith.
+            </div>
+            <div class="scripture-ref">2 Timothy 4:7</div>
+        </div>
+
         <!-- Intro -->
         <p class="body-text">
-            What a game. NCC Youth went toe-to-toe with UNCs in a back-and-forth battle that had everyone on their feet from tip-off to the final buzzer. This wasn't just a basketball game — it was a statement. Our youth showed heart, grit, and a level of competitiveness that had the gym buzzing all night.
+            What a game. NCC Youth went toe-to-toe with UNCs in a back-and-forth battle that had everyone on their feet from tip-off to the final buzzer. This wasn't just a basketball game — it was a display of the perseverance, unity, and faith that New Creation Church instills in its young people every day.
         </p>
 
         <!-- Action Photos -->
@@ -334,11 +399,17 @@
             UNCs came out strong and built an early lead, pushing ahead 57-51 heading into the later stages. But NCC Youth didn't flinch. They chipped away, clawed back, and eventually took the lead at 81-78 — flipping the script and sending the crowd into a frenzy.
         </p>
 
-        <div class="highlight-box">
-            <p>
-                Down 6 in the second half, NCC Youth went on a 30-21 run to take a 3-point lead. That stretch showed exactly what this team is made of — resilience, teamwork, and an absolute refusal to quit.
-            </p>
+        <!-- Perseverance Scripture -->
+        <div class="scripture-block">
+            <div class="scripture-text">
+                Let us not become weary in doing good, for at the proper time we will reap a harvest if we do not give up.
+            </div>
+            <div class="scripture-ref">Galatians 6:9</div>
         </div>
+
+        <p class="body-text">
+            Down 6 in the second half, NCC Youth went on a 30-21 run to take a 3-point lead. That stretch showed exactly what this team is made of — resilience born from faith, teamwork rooted in fellowship, and an absolute refusal to quit. These young men didn't just play harder — they played together, lifting each other up every possession.
+        </p>
 
         <p class="body-text">
             With the game knotted at 81-81, it was anyone's to take. UNCs found another gear in the closing minutes, pulling away to seal a 96-88 victory. The final score doesn't tell the full story — this game was contested every single possession.
@@ -365,6 +436,14 @@
                     <p class="photo-caption" style="margin-top:10px">Final: NCC 88, UNCs 96</p>
                 </div>
             </div>
+        </div>
+
+        <!-- Unity Scripture -->
+        <div class="scripture-block">
+            <div class="scripture-text">
+                Two are better than one, because they have a good return for their labor: If either of them falls down, one can help the other up.
+            </div>
+            <div class="scripture-ref">Ecclesiastes 4:9-10</div>
         </div>
 
         <!-- Score Timeline -->
@@ -415,13 +494,33 @@
         <!-- Closing -->
         <div class="section-header">Looking Ahead</div>
         <p class="body-text">
-            The final score says UNCs took this one, but NCC Youth proved something tonight. This team doesn't back down. They fought back from a deficit, took the lead, and went blow-for-blow with a strong opponent until the very end. The future is bright for NCC Youth basketball — and the next matchup is going to be even better.
+            The final score says UNCs took this one, but NCC Youth proved something on that court. This team doesn't back down. They fought back from a deficit, took the lead, and went blow-for-blow with a strong opponent until the very end. That kind of heart isn't just built in practice — it's built in prayer, in fellowship, and in trusting God through every challenge.
+        </p>
+
+        <!-- Strength Scripture -->
+        <div class="scripture-block">
+            <div class="scripture-text">
+                I can do all things through Christ who strengthens me.
+            </div>
+            <div class="scripture-ref">Philippians 4:13</div>
+        </div>
+
+        <p class="body-text">
+            This program isn't just about winning games — it's about raising young men who walk in faith, compete with integrity, and support one another like brothers in Christ. Every practice, every game, every moment of adversity is an opportunity to grow — not just as athletes, but as men of God.
         </p>
 
         <div class="highlight-box">
             <p>
-                Proud of every single one of these young men. The score resets, but the effort and growth carry forward. This is what it's about.
+                Proud of every single one of these young men. The score resets, but the faith, the character, and the brotherhood carry forward. That's what New Creation is about.
             </p>
+        </div>
+
+        <!-- Closing Scripture -->
+        <div class="scripture-block">
+            <div class="scripture-text">
+                Train up a child in the way he should go; even when he is old he will not depart from it.
+            </div>
+            <div class="scripture-ref">Proverbs 22:6</div>
         </div>
 
         <!-- Remaining Photos -->
@@ -439,8 +538,10 @@
 
     <!-- Footer -->
     <div class="blog-footer">
+        <img src="ncc-logo-clean.png" alt="New Creation Church" class="footer-logo">
         <div class="church-name">New Creation Church</div>
-        <div class="tagline">Youth Basketball — Building character on and off the court</div>
+        <div class="tagline">Youth Basketball — Growing in faith on and off the court</div>
+        <div class="footer-scripture">"For where two or three gather in my name, there am I with them." — Matthew 18:20</div>
     </div>
 
 </body>
